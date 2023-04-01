@@ -1,6 +1,7 @@
 class EmployeePayrollData{
     // property
     id;
+    name;
     salary;
     gender;
     startDate;
@@ -15,14 +16,32 @@ class EmployeePayrollData{
     }
 
     // getter and setter method
-    get name(){
-        return this._name;
+    getName(){
+        return this.name;
     }
-    set name(name){
+    setName(name){
         let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
         if (nameRegex.test(name))
-          this._name = name;
+          this.name = name;
         else throw "Incorrect Name!!"  
+    }
+    getId(){
+        return this.id;
+    }
+    setId(id){
+        let idRegex = RegExp('^[1-9][0-9]*');
+        if (idRegex.test(id))
+        this.id = id;
+        else throw "id must be a Positive Number and non zero";
+    }
+    getGender(){
+        return this.gender;
+    }
+    setGender(gender){
+        let genderRegex = RegExp("[M|F]");
+        if (genderRegex.test(gender))
+        this.gender = gender;
+        else throw "Enter Correct Gender";
     }
 
     // toString method
@@ -37,7 +56,9 @@ class EmployeePayrollData{
 let employeePayrollData = new EmployeePayrollData(1, "Kundan", 40000);
 console.log(employeePayrollData.toString());
 try{
-    employeePayrollData.name = "Rahul";
+    employeePayrollData.setName("Rahul");
+    employeePayrollData.setId(2);
+    employeePayrollData.setGender("M");
 console.log(employeePayrollData.toString());
 }catch (exception){
     console.error(exception);
